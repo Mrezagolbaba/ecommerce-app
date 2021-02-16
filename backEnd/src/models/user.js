@@ -8,7 +8,6 @@ const userSchema = new  mongoose.Schema({
         trim:true,
         max:20,
         min:3
-
     },
     lastName: {
         type: String,
