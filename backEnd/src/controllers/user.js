@@ -3,7 +3,7 @@ const User = require('../models/user');
 exports.signup = (req,res)=>{
     User.findOne({email: req.body.email}, (error,user) => {
         if(user) return res.status(400).json({
-            message:'User Already registered'
+            message:'User Already registered!'
         });
         const {
             firstName,
