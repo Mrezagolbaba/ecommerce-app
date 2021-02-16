@@ -1,7 +1,6 @@
-/backEnd/node_modules
-.idea
-/backEnd/.idea
-/frontEnd/.idea
+**/node_modules
+**/.idea
+**/.idea/workspace.xml
+
 /frontEnd/node_modules
-/backEnd/package-lock.json
-/backEnd/.idea/workspace.xml
+**/package-lock.json
