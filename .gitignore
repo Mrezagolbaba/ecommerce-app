@@ -3,3 +3,5 @@
 /backEnd/.idea
 /frontEnd/.idea
 /frontEnd/node_modules
+/backEnd/package-lock.json
+/backEnd/.idea/workspace.xml
