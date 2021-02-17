@@ -7,3 +7,5 @@
 node_modules/
 workspace.xml
 package-lock.json
+backEnd/package-lock.json
+backEnd/.idea/workspace.xml
