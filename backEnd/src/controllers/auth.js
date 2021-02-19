@@ -22,7 +22,6 @@ exports.signup = (req,res) => {
             userName:Math.random().toString()
         });
         newUser.save((error,data)=>{
-            console.log(error)
             if(error){
                 return res.status(400).json({
                     message:'Something went wrong'
@@ -63,8 +62,3 @@ exports.signin = (req,res) =>{
             }
         })
 };
-exports.requireSignin = (req,res,next) =>{
-    const token = req.headers.authorization.split(" ")[1];
-    req.user = jwt.verify(token,process.env.JWT_SECRET);
-    next()
-}
