@@ -1,9 +1,9 @@
 const User = require('../../models/user');
 const jwt = require('jsonwebtoken');
-exports.signup = (req,res)=>{
-    User.findOne({email: req.body.email}, (error, user) => {
-        if(user) return res.status(400).json({
-            message:'Admin Already registered!'
+exports.signup = (req, res) => {
+    User.findOne({ email: req.body.email }, (error, user) => {
+        if (user) return res.status(400).json({
+            message: 'Admin Already registered!'
         });
         const {
             firstName,
@@ -16,35 +16,35 @@ exports.signup = (req,res)=>{
             lastName,
             email,
             password,
-            userName:Math.random().toString(),
-            role:'admin'
+            userName: Math.random().toString(),
+            role: 'admin'
         });
-        newUser.save((error,data)=>{
+        newUser.save((error, data) => {
             console.log(error)
-            if(error){
+            if (error) {
                 return res.status(400).json({
-                    message:'Something went wrong'
+                    message: 'Something went wrong'
                 })
             }
-            if(data){
+            if (data) {
                 return res.status(201).json({
-                    message:'Admin created Successfully ...!'
+                    message: 'Admin created Successfully ...!'
                 })
             }
         })
     })
 };
-exports.signin = (req,res) =>{
-    User.findOne({email : req.body.email})
-        .exec((error,user)=>{
-            if(error) return res.status(400).json({error});
-            if(user){
-                if(user.authenticate(req.body.password) && user.role === 'admin'){
-                    const token = jwt.sign({_id: user._id,role:user.role},process.env.JWT_SECRET,{expiresIn: '1h'})
-                    const {_id,firstName,lastName,email,role,fullName}=user;
+exports.signin = (req, res) => {
+    User.findOne({ email: req.body.email })
+        .exec((error, user) => {
+            if (error) return res.status(400).json({ error });
+            if (user) {
+                if (user.authenticate(req.body.password) && user.role === 'admin') {
+                    const token = jwt.sign({ _id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '10h' })
+                    const { _id, firstName, lastName, email, role, fullName } = user;
                     res.status(200).json({
                         token,
-                        user:{
+                        user: {
                             _id,
                             firstName,
                             lastName,
@@ -53,11 +53,11 @@ exports.signin = (req,res) =>{
                             fullName
                         }
                     });
-                }else{
-                    return res.status(400).json({message:'Invalid Password'})
+                } else {
+                    return res.status(400).json({ message: 'Invalid Password' })
                 }
-            }else {
-                return res.status(400).json({message:'Something went wrong'})
+            } else {
+                return res.status(400).json({ message: 'Something went wrong' })
             }
         })
 };
