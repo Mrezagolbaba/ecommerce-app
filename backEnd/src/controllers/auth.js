@@ -14,9 +14,8 @@ exports.signup = (req,res) => {
             email,
             password,
         } = req.body;
-        if(phoneNumber){
-            console.log(phoneNumber)
-        }
+        
+        
         const newUser = new User({
             firstName,
             lastName,
