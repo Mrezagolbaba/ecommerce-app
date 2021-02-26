@@ -4,7 +4,7 @@ const {} = require('express-validator');
 exports.signup = (req,res) => {
 
     User.findOne({email: req.body.email})
-        .exec((error,user)=>{
+        .exec((error,user)=>{   
         if(user) return res.status(400).json({
             message:'User Already registered!'
         });
@@ -12,8 +12,11 @@ exports.signup = (req,res) => {
             firstName,
             lastName,
             email,
-            password
+            password,
         } = req.body;
+        if(phoneNumber){
+            console.log(phoneNumber)
+        }
         const newUser = new User({
             firstName,
             lastName,
