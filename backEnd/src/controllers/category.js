@@ -22,9 +22,13 @@ function createCategories(categories,parentId = null){
     return categoryList;
 }
 exports.addCategory = (req,res)=> {
+   
     const categoryObj ={
         name:req.body.name,
         slug:slugify(req.body.name)
+    }
+    if(req.file){
+        categoryObj.categoryImage = process.env.API + '/public/' + req.file.filename
     }
 
     if(req.body.parentId){
