@@ -1,0 +1,1 @@
+export const api = "localhost:2020/api/";
