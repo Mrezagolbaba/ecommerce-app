@@ -8,7 +8,7 @@ export function Input(props) {
                 type={props.type}
                 placeholder={props.placeholder}
                 value={props.value}
-                readOnly={props.onChange}
+                onChange={props.onChange}
             />
             <Form.Text className="text-muted">
                 {props.errorMessage}
