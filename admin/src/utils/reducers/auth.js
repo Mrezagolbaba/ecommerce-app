@@ -13,7 +13,7 @@ const initialState = {
     authenticating:false
 };
 
-const authReducer = (state=initialState, action) => {
+const auth = (state=initialState, action) => {
     switch (action.type){
         case authConstant.LOGIN_REQUEST:
             state = {
@@ -34,4 +34,4 @@ const authReducer = (state=initialState, action) => {
     return state
 };
 
-export default authReducer
+export default auth
