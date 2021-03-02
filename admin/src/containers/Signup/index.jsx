@@ -2,20 +2,12 @@ import Layout from "../../components/Layout";
 import { Container, Form, Row, Col, Button } from "react-bootstrap";
 import {Input} from "../../components/UI/Input";
 import { login } from "../../utils/actions";
-import { useDispatch } from "react-redux";
-import { useForm } from "react-hook-form";
+import {useDispatch, useSelector} from "react-redux";
+import { useState } from "react";
+import {Redirect} from "react-router-dom";
 export default function Signup() {
-
-    const dispatch = useDispatch()
-
-    const onLogin =(e)=>{
-        e.preventDefault();
-        let user ={
-            email:'a@a.com',
-            password:'2222'
-        }
-        dispatch(login(user))
-    }
+    const [email,setEmail]= useState('')
+    const [password,setPassword]= useState('')
     return (
         <Layout>
             <Container>
@@ -24,14 +16,14 @@ export default function Signup() {
                         <Form >
                             <Row>
                                 <Col md={6}>
-                                   <Input
-                                       label="First Name"
-                                       placeholder="First Name"
-                                       value=""
-                                       type="text"
-                                       onChange={()=>{}}
-                                       // errorMessage=" First Name is required!"
-                                   />
+                                    <Input
+                                        label="First Name"
+                                        placeholder="First Name"
+                                        value=""
+                                        type="text"
+                                        onChange={()=>{}}
+                                        // errorMessage=" First Name is required!"
+                                    />
                                 </Col>
                                 <Col md={6}>
                                     <Input
@@ -61,9 +53,9 @@ export default function Signup() {
                                 onChange={()=>{}}
                                 // errorMessage=" First Name is required!"
                             />
-                            <Button variant="primary" type="button" onClick={onLogin}>
+                            <Button variant="primary" type="submit" >
                                 Submit
-                             </Button>
+                            </Button>
                         </Form>
                     </Col>
                 </Row>
