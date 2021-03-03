@@ -11,16 +11,7 @@ export default function Signin() {
     const [password,setPassword]= useState('')
     const [error,setError]= useState('')
     const auth = useSelector(state => state.auth)
-
-
     const dispatch = useDispatch()
-
-    useEffect(()=>{
-        if(!auth.authenticate){
-            dispatch(isUserLoggedIn)
-        }
-    },[])
-
     const onLogin =(e)=>{
         e.preventDefault();
         let user ={
