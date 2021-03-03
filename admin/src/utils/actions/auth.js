@@ -2,7 +2,6 @@ import { authConstant } from "../constant"
 import axios from "../../helpers/axios";
 
 export const login = (user) =>{
-    console.log(user)
     return async (dispatch)=>{
         dispatch({type:authConstant.LOGIN_REQUEST})
         const res = await axios.post(`/admin/signin`,{
@@ -31,6 +30,7 @@ export const login = (user) =>{
         }
     }
 }
+
 export const isUserLoggedIn = () => {
     return async dispatch =>{
         const token =localStorage.getItem('token' )
@@ -50,5 +50,17 @@ export const isUserLoggedIn = () => {
                 }
             })
         }
+    }
+}
+export const signout = (user) =>{
+    console.log(user)
+    return async (dispatch)=>{
+        localStorage.clear()
+        dispatch({
+            type:authConstant.LOGOUT_REQUEST,
+            payload:{
+                error: "failed to login"
+            }
+        })
     }
 }
