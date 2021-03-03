@@ -1,10 +1,45 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { NavLink,Link } from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {signout} from "../../utils/actions";
 
 export default function Header() {
+    const dispatch = useDispatch()
+    const auth = useSelector(state => state.auth)
+
+    const logout = () => {
+        dispatch(signout())
+    }
+
+
+
+  const renderLoggedInLinks =()=>{
+    return(
+        <Nav>
+
+          <li className="nav-item">
+            <a className="nav-link pointer-event" onClick={logout}>Signout</a>
+          </li>
+        </Nav>
+    )
+  }
+  const renderNonLoggedInLinks =()=>{
+    return(
+        <Nav>
+          {/* <Nav.Link href="#deets">Signin</Nav.Link> */}
+          <li className="nav-item">
+            <NavLink to='/signin'  className="nav-link">Signin</NavLink>
+          </li>
+          <li className="nav-item">
+            <NavLink to='signup' className="nav-link">Signup</NavLink>
+          </li>
+
+        </Nav>
+    )
+  }
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{zIndex:'1'}}>
+      <Container fluid>
         <Link to="/" className="navbar-brand">Admin Dashboard</Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -17,16 +52,7 @@ export default function Header() {
               <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
             </NavDropdown> */}
           </Nav>
-          <Nav>
-            {/* <Nav.Link href="#deets">Signin</Nav.Link> */}
-            <li className="nav-item">
-              <NavLink to='/signin'  className="nav-link">Signin</NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink to='signup' className="nav-link">Signup</NavLink>
-            </li>
-
-          </Nav>
+          {auth.authenticate?renderLoggedInLinks():renderNonLoggedInLinks()}
         </Navbar.Collapse>
       </Container>
     </Navbar>
