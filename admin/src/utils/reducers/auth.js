@@ -10,7 +10,10 @@ const initialState = {
 
     },
     authenticate:false,
-    authenticating:false
+    authenticating:false,
+    loading:false,
+    error:null,
+    message:''
 };
 
 const authReducer = (state=initialState, action) => {
@@ -32,7 +35,20 @@ const authReducer = (state=initialState, action) => {
             break;
         case authConstant.LOGOUT_REQUEST:
             state = {
+                ...state,
+                loading: true
+            }
+            break;
+        case authConstant.LOGOUT_SUCCESS:
+            state = {
                 ...initialState
+            }
+            break;
+        case authConstant.LOGOUT_FAILURE:
+            state = {
+                ...state,
+                error: action.payload.error,
+                loading: false
             }
             break;
     }
