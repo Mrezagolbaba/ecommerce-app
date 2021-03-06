@@ -5,7 +5,7 @@ import { login } from "../../utils/actions";
 import {useDispatch, useSelector} from "react-redux";
 import { useState } from "react";
 import {Redirect} from "react-router-dom";
-import {signup} from "../../utils/actions/user";
+import {signup} from "../../utils/actions/user.action";
 export default function Signup() {
     const [email,setEmail]= useState('')
     const [password,setPassword]= useState('')
