@@ -17,6 +17,7 @@ const initialState = {
 };
 
 const authReducer = (state=initialState, action) => {
+    console.log(action)
     switch (action.type){
         case authConstant.LOGIN_REQUEST:
             state = {
