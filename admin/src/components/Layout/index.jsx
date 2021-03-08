@@ -1,6 +1,7 @@
 import Header from "../Header";
 import {Col, Container, Row} from 'react-bootstrap';
 import {NavLink} from "react-router-dom";
+import './styles.css'
 export default function Layout(props) {
     return (
       <>
@@ -13,7 +14,7 @@ export default function Layout(props) {
                       </Col>
                       <Col md={2} className='sidebar'>
                           <div dir="RTL">
-                              <ul style={{padding:'0',textAlign:'right'}}>
+                              <ul>
                                   <li><NavLink to='/'>خانه</NavLink></li>
                                   <li><NavLink to='/products'>محصولات</NavLink></li>
                                   <li><NavLink to='/category'>دسته بندی</NavLink></li>
