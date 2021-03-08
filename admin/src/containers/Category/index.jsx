@@ -64,7 +64,7 @@ const Category = (props) => {
                <Row>
                    <Col md={12}>
                         <div className="title-page">
-                            <Button variant="success" onClick={handleShow}>+</Button>
+                            <Button size="sm" variant="outline-success" onClick={handleShow}> اضافه کردن دسته بندی جدید</Button>
                             <h3>دسته بندی</h3>
                         </div>
                    </Col>
