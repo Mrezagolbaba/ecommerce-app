@@ -17,7 +17,7 @@ function App() {
     const auth = useSelector(state => state.auth)
     useEffect(()=>{
         if(!auth.authenticate){
-            dispatch(isUserLoggedIn)
+            dispatch(isUserLoggedIn())
         }
     },[])
     return (
