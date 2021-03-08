@@ -10,9 +10,6 @@ export default function Header() {
     const logout = () => {
         dispatch(signout())
     }
-
-
-
   const renderLoggedInLinks =()=>{
     return(
         <Nav>
