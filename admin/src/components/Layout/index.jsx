@@ -9,7 +9,7 @@ export default function Layout(props) {
           {props.sidebar?
               <Container fluid >
                   <Row >
-                      <Col md={10} style={{marginRight:'auto'}}>
+                      <Col md={10} style={{marginRight:'auto',paddingTop:'60px'}}>
                           {props.children}
                       </Col>
                       <Col md={2} className='sidebar'>
