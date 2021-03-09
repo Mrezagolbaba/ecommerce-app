@@ -1,0 +1,7 @@
+.input-component{
+
+}
+::placeholder {
+    color: red;
+    text-align: right;
+}
