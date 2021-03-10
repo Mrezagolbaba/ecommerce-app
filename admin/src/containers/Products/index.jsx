@@ -17,6 +17,7 @@ const Products = () => {
     const [categoryParentId, setCategoryParentId] = useState('');
     const dispatch = useDispatch()
     const category = useSelector(state => state.category)
+    const product = useSelector(state => state.product)
     const handleClose = () => {
         console.log(quantity, productPicture)
         const form = new FormData()
@@ -48,8 +49,8 @@ const Products = () => {
     }
     const handleShow = () => setShow(true);
 
-    const renderProduct = () =>{
-        return(
+    const renderProduct = () => {
+        return (
             <Table responsive variant='dark' striped>
                 <thead>
                 <tr>
@@ -62,20 +63,19 @@ const Products = () => {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td >Table cell</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-
-                        <td >Table cell</td>
-
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td >Table cell</td>
-                </tr>
+                {
+                    product.products.length > 0 ?
+                        product.products.map(product =>
+                            <tr>
+                                <td>{product.name}</td>
+                                <td>{product.price}</td>
+                                <td>{product.quantity}</td>
+                                <td>{product.description}</td>
+                                <td>{product.productPicture}</td>
+                                <td>{product.category}</td>
+                            </tr>
+                        ) : null
+                }
                 </tbody>
             </Table>
         )
