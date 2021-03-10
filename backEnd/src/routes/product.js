@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
     }
   })
   
-  var upload = multer({ storage })
+  const upload = multer({ storage })
 
 
 router.post('/product/create',requireSignin,adminMiddleware,upload.array('productPicture'),createProduct);
