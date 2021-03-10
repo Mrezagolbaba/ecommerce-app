@@ -5,7 +5,7 @@ import Signin from "./containers/Signin";
 import Signup from "./containers/Signup";
 import PrivateRoute from "./components/HOC/privateRoute";
 import {useEffect} from "react";
-import {getAllCategory, isUserLoggedIn} from "./utils/actions";
+import {getInitialData, isUserLoggedIn} from "./utils/actions";
 import {useDispatch, useSelector} from "react-redux";
 import Products from "./containers/Products";
 import Orders from "./containers/Orders";
@@ -19,7 +19,7 @@ function App() {
         if(!auth.authenticate){
             dispatch(isUserLoggedIn())
         }
-        dispatch(getAllCategory())
+        dispatch(getInitialData())
 
     },[])
     return (
