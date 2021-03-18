@@ -2,6 +2,7 @@ const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 const {} = require('express-validator');
 const bcrypt = require('bcrypt');
+const shortId = require('shortid')
 exports.signup = (req,res) => {
 
     User.findOne({email: req.body.email})
@@ -22,7 +23,7 @@ exports.signup = (req,res) => {
             lastName,
             email,
             has_password,
-            userName:Math.random().toString()
+            userName:shortId.generate()
         });
         newUser.save((error,data)=>{
             if(error){

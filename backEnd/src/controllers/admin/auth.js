@@ -20,7 +20,7 @@ exports.signup = (req, res) => {
             lastName,
             email,
             has_password,
-            userName: shortId(),
+            userName: shortId.generate(),
             role: 'admin'
         });
         newUser.save((error, data) => {
