@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const shortId = require('shortid')
 
 exports.signup = (req, res) => {
+    console.log('SIGN UP PROCESS ====>>>>>')
     User.findOne({ email: req.body.email },async (error, user) => {
         if (user) return res.status(400).json({
             message: 'Admin Already registered!'
@@ -39,6 +40,7 @@ exports.signup = (req, res) => {
     })
 };
 exports.signin = (req, res) => {
+    console.log('SIGN IN PROCESS ====>>>>>')
     User.findOne({ email: req.body.email })
         .exec((error, user) => {
             if (error) return res.status(400).json({ error });
