@@ -1,7 +1,8 @@
-import './styles.css'
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
 import {getAllCategory} from "../../utils/actions";
+import './styles.css'
+
 export const MenuHeader = (Props) => {
 
     const category = useSelector(state => state.category)
@@ -15,7 +16,12 @@ export const MenuHeader = (Props) => {
         categories.map((i) => {
             myCategories.push(
                 <li key={i.name}>
-                    {i.name}
+                    {
+                        i.parentId?<a href={i.slug}>{i.name}</a>
+                            :
+                            <span>{i.name}</span>
+                    }
+
                     {i.children.length > 0 ? (<ul>{renderCategories(i.children)}</ul>) : null}
                 </li>
             )
@@ -25,7 +31,7 @@ export const MenuHeader = (Props) => {
     }
     return (
         <div className='menuHeader'>
-            <ul>{category.categories.length>0?renderCategories(category.categories):null}</ul>
+            <ul>{category.categories?.length>0?renderCategories(category.categories):null}</ul>
         </div>
     );
 };
