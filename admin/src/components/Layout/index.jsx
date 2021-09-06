@@ -9,16 +9,16 @@ export default function Layout(props) {
           {props.sidebar?
               <Container fluid >
                   <Row >
-                      <Col md={10} style={{marginRight:'auto',paddingTop:'60px'}}>
+                      <Col md={10} style={{marginLeft:'auto',paddingTop:'60px'}}>
                           {props.children}
                       </Col>
                       <Col md={2} className='sidebar'>
-                          <div dir="RTL">
+                          <div>
                               <ul>
-                                  <li><NavLink to='/'>خانه</NavLink></li>
-                                  <li><NavLink to='/products'>محصولات</NavLink></li>
-                                  <li><NavLink to='/category'>دسته بندی</NavLink></li>
-                                  <li><NavLink to='/orders'>سفارشات</NavLink></li>
+                                  <li><NavLink to='/'>Home</NavLink></li>
+                                  <li><NavLink to='/products'>Products</NavLink></li>
+                                  <li><NavLink to='/category'> Category</NavLink></li>
+                                  <li><NavLink to='/orders'>Orders</NavLink></li>
                               </ul>
                           </div>
                       </Col>
