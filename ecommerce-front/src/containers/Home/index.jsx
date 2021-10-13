@@ -1,12 +1,9 @@
-import {Header} from "../../components/Header";
-import {MenuHeader} from "../../components/MenuHeader";
+import Layout from "src/components/Layout";
 
-export const Home = () => {
+export function Home ()  {
     return (
-        <div>
-            <Header/>
-            <MenuHeader/>
+        <Layout>
             Home
-        </div>
+        </Layout>
     );
 };
