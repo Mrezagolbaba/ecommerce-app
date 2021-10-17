@@ -57,13 +57,37 @@ exports.getCategories = (req, res) => {
       return res.status(400).json({ error });
     });
 };
-exports.updateCategories = (req, res) => {
-  const { name, patentId, type } = req.body;
+exports.updateCategories = async (req, res) => {
+  const { _id, name, patentId, type } = req.body;
+  const updatedCategories = [];
   if (name instanceof Array) {
     for (let i = 0; i < name.length; i++) {
-      if (patentId == "") {
+      const category = {
+        name: name[i],
+        type: type[i],
+      };
+      if (parentId[i] === "") {
+        category.parentId = patentId[i];
       }
+      const updatedCategory = await Category.findOneAndUpdate(
+        { _id: _id[i] },
+        category,
+        { new: true }
+      );
+      updatedCategories.push(updatedCategory);
     }
+    return res.status(201).json({ updatedCategories });
+  } else {
+    const category = {
+      name,
+      type,
+    };
+    if (patentId === "") {
+      category.parentId = patentId;
+    }
+    const updatedCategory = await Category.findOneAndUpdate({ _id }, category, {
+      new: true,
+    });
+    return res.status(201).json({ updatedCategory });
   }
-  res.status(200).json({ body: req.body });
 };
