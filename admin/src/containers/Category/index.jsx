@@ -21,6 +21,7 @@ import "react-checkbox-tree/lib/react-checkbox-tree.css";
 
 const Category = (props) => {
   const [show, setShow] = useState(false);
+  const [showDelete, setShowDelete] = useState(false);
   const [categoryName, setCategoryName] = useState("");
   const [categoryParentId, setCategoryParentId] = useState("");
   const [categoryImage, setCategoryImage] = useState("");
@@ -262,7 +263,17 @@ const Category = (props) => {
       </Modal>
     );
   };
-
+  const renderDeleteCategoryModal = () => {
+    return (
+      <Modal
+        show={showDelete}
+        handleClose={() => setShowDelete(false)}
+        modalTitle="Confirm"
+      >
+        Are you sure!
+      </Modal>
+    );
+  };
   const renderCategoriesAddModal = () => {
     return (
       <Modal
@@ -296,7 +307,6 @@ const Category = (props) => {
       </Modal>
     );
   };
-  console.log("onja", category, category.categories);
   return (
     <Layout sidebar>
       <Container>
@@ -339,6 +349,8 @@ const Category = (props) => {
       {renderCategoriesAddModal()}
       {/* Edit Categories */}
       {renderCategoriesUpdateModal()}
+      {/*Delete Categories*/}
+      {renderDeleteCategoryModal()}
     </Layout>
   );
 };
