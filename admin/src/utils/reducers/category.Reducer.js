@@ -8,7 +8,6 @@ const initialState = {
 
 const buildNewCategories = (parentId, categories, category) => {
   let myCategories = [];
-
   if (parentId === undefined) {
     return [
       ...categories,
