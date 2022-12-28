@@ -2,8 +2,8 @@
 **/.idea
 **/.idea/workspace.xml
 
-/frontEnd/node_modules
-/backEnd/node_modules
+/ecommerce-front/node_modules
+backEnd/node_modules
 /backEnd/package-lock.json
 node_modules/
 workspace.xml
