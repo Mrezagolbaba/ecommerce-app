@@ -59,7 +59,7 @@ exports.getCategories = (req, res) => {
     });
 };
 exports.updateCategories = async (req, res) => {
-  const { _id, name, patentId, type } = req.body;
+  const { _id, name, parentId, type } = req.body;
   const updatedCategories = [];
   if (name instanceof Array) {
     for (let i = 0; i < name.length; i++) {
@@ -67,8 +67,8 @@ exports.updateCategories = async (req, res) => {
         name: name[i],
         type: type[i],
       };
-      if (parentId[i] === "") {
-        category.parentId = patentId[i];
+      if (parentId !== "") {
+        category.parentId = parentId[i];
       }
       const updatedCategory = await Category.findOneAndUpdate(
         { _id: _id[i] },
@@ -83,8 +83,8 @@ exports.updateCategories = async (req, res) => {
       name,
       type,
     };
-    if (patentId === "") {
-      category.parentId = patentId;
+    if (parentId !== "") {
+      category.parentId = parentId;
     }
     const updatedCategory = await Category.findOneAndUpdate({ _id }, category, {
       new: true,
