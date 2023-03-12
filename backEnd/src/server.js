@@ -26,19 +26,16 @@ mongoose.connect(`mongodb+srv://${process.env.MONGO_DB_USER}:${process.env.MONGO
 ).then(() => {
     console.log('database connected')
 });
-const corsOpts = {
-    origin: '*',
-
-    methods: [
-        'GET',
-        'POST',
-    ],
-
-    allowedHeaders: [
-        'Content-Type',
-    ],
-};
-app.use(cors(corsOpts));
+app.use(
+    cors({
+      origin: "*",
+    })
+  );
+  app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+  });
+// app.use(cors(corsOpts));
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use('/api', authRoutes);
