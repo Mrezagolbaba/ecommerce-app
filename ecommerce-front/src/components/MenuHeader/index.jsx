@@ -1,6 +1,6 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {getAllCategory} from "src/utils/actions";
+import {getAllCategory} from "../../utils/actions";
 import './styles.css'
 
 export const MenuHeader = (Props) => {

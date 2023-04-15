@@ -1,5 +1,5 @@
-import {Header} from "src/components/Header";
-import {MenuHeader} from "src/components/MenuHeader";
+import {Header} from "../Header";
+import {MenuHeader} from "../../components/MenuHeader";
 
 function Layout(props) {
     return (
