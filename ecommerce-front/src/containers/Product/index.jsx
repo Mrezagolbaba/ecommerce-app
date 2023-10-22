@@ -1,8 +1,8 @@
-import Layout from "src/components/Layout";
+import Layout from "../../components/Layout";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProductBySlug } from "src/utils/actions";
-import "./styles.css";
+import { getProductBySlug } from "../../utils/actions";
+// import "./styles.css";
 import { generatePublicUrl } from "../../urlConfig";
 
 export function Product(props) {

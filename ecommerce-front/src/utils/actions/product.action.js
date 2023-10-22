@@ -1,4 +1,4 @@
-import axios from "src/helpers/axios";
+import axios from "../../helpers/axios";
 import {productConstant} from "../constant";
 
 export const getProductBySlug=(slug)=>{

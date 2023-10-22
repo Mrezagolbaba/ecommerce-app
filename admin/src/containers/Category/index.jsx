@@ -31,6 +31,9 @@ const Category = (props) => {
   const [expandedArray, setExpandedArray] = useState([]);
   const [updateCategory, setUpdateCategory] = useState(false);
 
+  useEffect(()=>{
+    getAllCategory()
+  })
   const category = useSelector((state) => state.category);
 
   const dispatch = useDispatch();
@@ -97,6 +100,7 @@ const Category = (props) => {
     setCategoryImage(e.target.files[0]);
   };
   const handleCategoryInput = (key, value, index, type) => {
+    console.log(key, value, index, type);
     if (type === "checked") {
       const updatedCheckArray = checkedArray.map((item, _index) =>
         index === _index ? { ...item, [key]: value } : item
